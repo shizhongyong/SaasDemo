@@ -1,15 +1,19 @@
 package cn.yunniao.saas.demo.components.main.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnItemClick;
+import cn.yunniao.saas.demo.R;
 import cn.yunniao.saas.demo.common.utils.LogUtil;
 import cn.yunniao.saas.demo.common.utils.RxJavaUtil;
-import cn.yunniao.saas.demo.R;
-import cn.yunniao.saas.demo.common.view.activity.BaseTitleActivity;
+import cn.yunniao.saas.demo.common.view.activity.BaseActivity;
 import cn.yunniao.saas.demo.components.main.api.IMainService;
 import cn.yunniao.saas.demo.net.RetrofitHelper;
 import cn.yunniao.saas.demo.net.progress.ProgressDialogObserver;
@@ -17,7 +21,7 @@ import cn.yunniao.saas.demo.net.response.ResponseData;
 import in.srain.cube.views.ptr.PtrDefaultHandler2;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 
-public class MainActivity extends BaseTitleActivity {
+public class MainActivity extends BaseActivity {
 
 	private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -49,6 +53,11 @@ public class MainActivity extends BaseTitleActivity {
 
 		mAdapter = new MainAdapter(this);
 		mListView.setAdapter(mAdapter);
+	}
+
+	@OnItemClick(R.id.list_view)
+	protected void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+		startActivity(new Intent(this, DebugActivity.class));
 	}
 
 	private void loadData(final int page) {

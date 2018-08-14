@@ -2,6 +2,20 @@
 	<string name="app_name">SaasDemo</string>
 	<string name="loading">加载中</string>
 	<string name="permission_denied">应用缺少必要的权限，无法使用！</string>
+	<string name="modify_server_address">修改服务器地址需要重启APP，是否继续？</string>
 
+	<string name="yes">是</string>
+	<string name="no">否</string>
+	<string name="ok">确定</string>
+	<string name="cancel">取消</string>
 	<string name="exit">退出</string>
+	<string name="save">保存</string>
+
+	<!-- DEBUG MODE -->
+	<string name="server_f1">F1</string>
+	<string name="server_m1">M1</string>
+	<string name="server_102">102</string>
+	<string name="server_pre">预上线环境</string>
+	<string name="server_release">线上环境</string>
+
 </resources>

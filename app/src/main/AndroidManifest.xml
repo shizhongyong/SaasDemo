@@ -34,6 +34,14 @@
 			android:screenOrientation="portrait"
 			android:theme="@style/AppTheme" />
 
+		<activity
+			android:name=".components.main.ui.DebugActivity"
+			android:screenOrientation="portrait" />
+
+		<service
+			android:name=".service.RebootService"
+			android:exported="false"
+			android:process=":reboot" />
 	</application>
 
 </manifest>

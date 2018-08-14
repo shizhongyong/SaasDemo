@@ -108,4 +108,10 @@ public class SPUtil {
 		}
 		return null;
 	}
+
+	public static void commit() {
+		SharedPreferences.Editor editor = getSharedPref().edit();
+		editor.commit();
+	}
+
 }
