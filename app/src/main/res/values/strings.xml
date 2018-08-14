@@ -1,0 +1,7 @@
+<resources>
+	<string name="app_name">SaasDemo</string>
+	<string name="loading">加载中</string>
+	<string name="permission_denied">应用缺少必要的权限，无法使用！</string>
+
+	<string name="exit">退出</string>
+</resources>
