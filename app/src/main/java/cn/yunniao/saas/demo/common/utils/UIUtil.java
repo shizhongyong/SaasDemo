@@ -1,6 +1,8 @@
 package cn.yunniao.saas.demo.common.utils;
 
+import android.content.Context;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 public class UIUtil {
 
@@ -26,4 +28,20 @@ public class UIUtil {
 			}
 		}
 	}
+
+	/**
+	 * 隐藏键盘
+	 *
+	 * @param view
+	 */
+	public static void hideSoftInput(View view) {
+		if (view == null) {
+			return;
+		}
+		InputMethodManager imm = (InputMethodManager) AppUtil.getSystemService(Context.INPUT_METHOD_SERVICE);
+		if (imm.isActive()) {
+			imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+		}
+	}
+
 }

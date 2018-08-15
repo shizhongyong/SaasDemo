@@ -27,6 +27,7 @@ public abstract class BaseTitleActivity extends BaseActivity {
 
 	@OnClick({R.id.tv_title_left, R.id.iv_title_left})
 	protected void onClickTitleLeft() {
+		onBackPressed();
 	}
 
 	@OnClick(R.id.tv_title_right)

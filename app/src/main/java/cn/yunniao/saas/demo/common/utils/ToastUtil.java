@@ -321,7 +321,7 @@ public class ToastUtil {
 
 	private static View getView(@LayoutRes final int layoutId) {
 		LayoutInflater inflate =
-				(LayoutInflater) AppUtil.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				(LayoutInflater) AppUtil.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		return inflate != null ? inflate.inflate(layoutId, null) : null;
 	}
 

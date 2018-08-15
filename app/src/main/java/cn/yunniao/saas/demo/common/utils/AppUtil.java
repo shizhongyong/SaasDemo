@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 public class AppUtil {
@@ -22,6 +23,10 @@ public class AppUtil {
 
 	public static Context getContext() {
 		return mContext;
+	}
+
+	public static Object getSystemService(@NonNull String name) {
+		return mContext.getSystemService(name);
 	}
 
 	public static Resources getResources() {

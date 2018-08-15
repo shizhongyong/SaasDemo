@@ -2,7 +2,6 @@ package cn.yunniao.saas.demo.components.main.ui;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Process;
 import android.support.annotation.Nullable;
@@ -16,6 +15,7 @@ import cn.yunniao.saas.demo.common.constant.ServerHost;
 import cn.yunniao.saas.demo.common.utils.ActivityManager;
 import cn.yunniao.saas.demo.common.utils.AppUtil;
 import cn.yunniao.saas.demo.common.utils.SPUtil;
+import cn.yunniao.saas.demo.common.utils.UIUtil;
 import cn.yunniao.saas.demo.common.view.activity.BaseTitleActivity;
 import cn.yunniao.saas.demo.service.RebootService;
 
@@ -39,7 +39,14 @@ public class DebugActivity extends BaseTitleActivity {
 	}
 
 	@Override
+	protected void onClickTitleLeft() {
+		UIUtil.hideSoftInput(mEditText);
+		super.onClickTitleLeft();
+	}
+
+	@Override
 	protected void onClickTitleRight() {
+		UIUtil.hideSoftInput(mEditText);
 		new AlertDialog.Builder(this)
 				.setMessage(R.string.modify_server_address)
 				.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {

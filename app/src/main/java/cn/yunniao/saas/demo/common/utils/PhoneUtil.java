@@ -47,7 +47,7 @@ public final class PhoneUtil {
 	 */
 	public static boolean isPhone() {
 		TelephonyManager tm =
-				(TelephonyManager) AppUtil.getContext().getSystemService(Context.TELEPHONY_SERVICE);
+				(TelephonyManager) AppUtil.getSystemService(Context.TELEPHONY_SERVICE);
 		return tm != null && tm.getPhoneType() != TelephonyManager.PHONE_TYPE_NONE;
 	}
 
@@ -62,7 +62,7 @@ public final class PhoneUtil {
 	@RequiresPermission(READ_PHONE_STATE)
 	public static String getDeviceId() {
 		TelephonyManager tm =
-				(TelephonyManager) AppUtil.getContext().getSystemService(Context.TELEPHONY_SERVICE);
+				(TelephonyManager) AppUtil.getSystemService(Context.TELEPHONY_SERVICE);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 			if (tm == null) return "";
 			String imei = tm.getImei();
@@ -96,7 +96,7 @@ public final class PhoneUtil {
 	@RequiresPermission(READ_PHONE_STATE)
 	public static String getIMEI() {
 		TelephonyManager tm =
-				(TelephonyManager) AppUtil.getContext().getSystemService(Context.TELEPHONY_SERVICE);
+				(TelephonyManager) AppUtil.getSystemService(Context.TELEPHONY_SERVICE);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 			return tm != null ? tm.getImei() : "";
 		}
@@ -114,7 +114,7 @@ public final class PhoneUtil {
 	@RequiresPermission(READ_PHONE_STATE)
 	public static String getMEID() {
 		TelephonyManager tm =
-				(TelephonyManager) AppUtil.getContext().getSystemService(Context.TELEPHONY_SERVICE);
+				(TelephonyManager) AppUtil.getSystemService(Context.TELEPHONY_SERVICE);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 			return tm != null ? tm.getMeid() : "";
 		} else {
@@ -133,7 +133,7 @@ public final class PhoneUtil {
 	@RequiresPermission(READ_PHONE_STATE)
 	public static String getIMSI() {
 		TelephonyManager tm =
-				(TelephonyManager) AppUtil.getContext().getSystemService(Context.TELEPHONY_SERVICE);
+				(TelephonyManager) AppUtil.getSystemService(Context.TELEPHONY_SERVICE);
 		return tm != null ? tm.getSubscriberId() : "";
 	}
 
@@ -150,7 +150,7 @@ public final class PhoneUtil {
 	 */
 	public static int getPhoneType() {
 		TelephonyManager tm =
-				(TelephonyManager) AppUtil.getContext().getSystemService(Context.TELEPHONY_SERVICE);
+				(TelephonyManager) AppUtil.getSystemService(Context.TELEPHONY_SERVICE);
 		return tm != null ? tm.getPhoneType() : -1;
 	}
 
@@ -161,7 +161,7 @@ public final class PhoneUtil {
 	 */
 	public static boolean isSimCardReady() {
 		TelephonyManager tm =
-				(TelephonyManager) AppUtil.getContext().getSystemService(Context.TELEPHONY_SERVICE);
+				(TelephonyManager) AppUtil.getSystemService(Context.TELEPHONY_SERVICE);
 		return tm != null && tm.getSimState() == TelephonyManager.SIM_STATE_READY;
 	}
 
@@ -172,7 +172,7 @@ public final class PhoneUtil {
 	 */
 	public static String getSimOperatorName() {
 		TelephonyManager tm =
-				(TelephonyManager) AppUtil.getContext().getSystemService(Context.TELEPHONY_SERVICE);
+				(TelephonyManager) AppUtil.getSystemService(Context.TELEPHONY_SERVICE);
 		return tm != null ? tm.getSimOperatorName() : "";
 	}
 
@@ -183,7 +183,7 @@ public final class PhoneUtil {
 	 */
 	public static String getSimOperatorByMnc() {
 		TelephonyManager tm =
-				(TelephonyManager) AppUtil.getContext().getSystemService(Context.TELEPHONY_SERVICE);
+				(TelephonyManager) AppUtil.getSystemService(Context.TELEPHONY_SERVICE);
 		String operator = tm != null ? tm.getSimOperator() : null;
 		if (operator == null) return null;
 		switch (operator) {
@@ -225,7 +225,7 @@ public final class PhoneUtil {
 	@RequiresPermission(READ_PHONE_STATE)
 	public static String getPhoneStatus() {
 		TelephonyManager tm =
-				(TelephonyManager) AppUtil.getContext().getSystemService(Context.TELEPHONY_SERVICE);
+				(TelephonyManager) AppUtil.getSystemService(Context.TELEPHONY_SERVICE);
 		if (tm == null) return "";
 		String str = "";
 		str += "DeviceId(IMEI) = " + tm.getDeviceId() + "\n";
