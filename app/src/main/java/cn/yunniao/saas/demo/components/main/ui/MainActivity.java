@@ -13,6 +13,7 @@ import butterknife.OnItemClick;
 import cn.yunniao.saas.demo.R;
 import cn.yunniao.saas.demo.common.utils.LogUtil;
 import cn.yunniao.saas.demo.common.utils.RxJavaUtil;
+import cn.yunniao.saas.demo.common.utils.ToastUtil;
 import cn.yunniao.saas.demo.common.view.activity.BaseActivity;
 import cn.yunniao.saas.demo.components.main.api.IMainService;
 import cn.yunniao.saas.demo.net.RetrofitHelper;
@@ -53,6 +54,8 @@ public class MainActivity extends BaseActivity {
 
 		mAdapter = new MainAdapter(this);
 		mListView.setAdapter(mAdapter);
+
+		loadData(1);
 	}
 
 	@OnItemClick(R.id.list_view)
@@ -69,7 +72,7 @@ public class MainActivity extends BaseActivity {
 				.subscribe(new ProgressDialogObserver<List<String>>(this) {
 					@Override
 					protected void onSuccess(ResponseData<List<String>> responseData) {
-						LogUtil.d("onSuccess");
+						ToastUtil.showShort(R.string.load_finished);
 						mPage = page;
 						if (page == 1) {
 							mAdapter.clear();
