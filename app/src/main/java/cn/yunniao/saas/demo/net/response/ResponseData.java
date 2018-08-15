@@ -5,6 +5,12 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by shizy on 2017/11/3.
  * 服务端返回的统一JSON结构
+ *
+ * 开启混淆需要保持成员变量
+ * -keepclassmembers class **.response.ResponseData {
+ * 	<fields>;
+ * 	<init>();
+ * }
  */
 
 public class ResponseData<T> {

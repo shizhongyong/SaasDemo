@@ -1,6 +1,10 @@
 package cn.yunniao.saas.demo.components.main.bean;
 
-public class Repo {
+import cn.yunniao.saas.demo.common.bean.BaseBean;
+
+public class Repo extends BaseBean {
+
+	private static final long serialVersionUID = -2023625673622903606L;
 
 	private int id;
 	private String name;

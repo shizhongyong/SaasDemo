@@ -10,9 +10,15 @@ android {
         versionName "1.0"
     }
     buildTypes {
+		debug {
+			minifyEnabled true
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+			proguardFiles file('./proguard').listFiles()
+		}
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+			proguardFiles file('./proguard').listFiles()
         }
     }
 }
