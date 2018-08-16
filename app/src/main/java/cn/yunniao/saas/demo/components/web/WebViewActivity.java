@@ -31,7 +31,9 @@ import cn.yunniao.saas.demo.net.RetrofitHelper;
 
 public class WebViewActivity extends BaseTitleActivity {
 
-	private static final String TEL = "tel:";
+	private static final String HTTP = "http";
+	private static final String HTTPS = "https";
+	private static final String FILE = "file";
 
 	private static final String EXTRA_TITLE = "title";
 	private static final String EXTRA_URL = "url";
@@ -178,19 +180,34 @@ public class WebViewActivity extends BaseTitleActivity {
 
 	public boolean onInterceptUrl(String url) {
 		if (TextUtils.isEmpty(url)) {
-			return false;
-		}
-
-		url = url.toLowerCase();
-		Intent intent = null;
-		if (url.startsWith(TEL)) {
-			intent = new Intent(Intent.ACTION_DIAL, Uri.parse(url));
-		}
-
-		if (intent != null && intent.resolveActivity(getPackageManager()) != null) {
-			startActivity(intent);
 			return true;
 		}
+
+		Uri uri = Uri.parse(url);
+		String scheme = uri.getScheme();
+		if (TextUtils.isEmpty(scheme)) {
+			return true;
+		}
+
+		Intent intent = null;
+		scheme = scheme.toLowerCase();
+		switch (scheme) {
+			case HTTP:
+			case HTTPS:
+			case FILE:
+				break;
+			default:
+				intent = new Intent(Intent.ACTION_VIEW, uri);
+				break;
+		}
+
+		if (intent != null) {
+			if (intent.resolveActivity(getPackageManager()) != null) {
+				startActivity(intent);
+			}
+			return true;
+		}
+
 		return false;
 	}
 
