@@ -37,6 +37,10 @@
 			android:name=".components.main.ui.DebugActivity"
 			android:screenOrientation="portrait" />
 
+		<activity
+			android:name=".components.web.WebViewActivity"
+			android:screenOrientation="portrait" />
+
 		<service
 			android:name=".service.RebootService"
 			android:exported="false"

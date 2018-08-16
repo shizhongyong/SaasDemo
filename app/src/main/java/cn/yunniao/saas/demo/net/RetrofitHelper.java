@@ -42,6 +42,7 @@ public class RetrofitHelper {
 	private Retrofit mRetrofit;
 	private Retrofit.Builder mRetrofitBuilder;
 	private OkHttpClient.Builder mClientBuilder;
+	private HeaderInterceptor mHeaderInterceptor;
 
 	private RetrofitHelper() {
 	}
@@ -64,7 +65,8 @@ public class RetrofitHelper {
 		builder.writeTimeout(WRITE_TIME_OUT, TimeUnit.SECONDS);
 		builder.readTimeout(READ_TIME_OUT, TimeUnit.SECONDS);
 
-		builder.addInterceptor(new HeaderInterceptor());
+		mHeaderInterceptor = new HeaderInterceptor();
+		builder.addInterceptor(mHeaderInterceptor);
 		builder.cookieJar(new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(context)));
 
 		if (BuildConfig.DEBUG) {
@@ -103,16 +105,30 @@ public class RetrofitHelper {
 		mRetrofit = mRetrofitBuilder.build();
 	}
 
-	public static void addHeader(Map<String, String> headers) {
-		HeaderInterceptor.addHeader(headers);
+	public void addHeaders(Map<String, String> headers) {
+		if (mHeaderInterceptor != null) {
+			mHeaderInterceptor.addHeaders(headers);
+		}
 	}
 
-	public static void addHeader(String name, String value) {
-		HeaderInterceptor.addHeader(name, value);
+	public void addHeaders(String name, String value) {
+		if (mHeaderInterceptor != null) {
+			mHeaderInterceptor.addHeader(name, value);
+		}
 	}
 
-	public static String removeHeader(String name) {
-		return HeaderInterceptor.removeHeader(name);
+	public Map<String, String> getHeader() {
+		if (mHeaderInterceptor != null) {
+			return mHeaderInterceptor.getHeaders();
+		}
+		return null;
+	}
+
+	public String removeHeader(String name) {
+		if (mHeaderInterceptor != null) {
+			return mHeaderInterceptor.removeHeader(name);
+		}
+		return null;
 	}
 
 	/**

@@ -1,6 +1,6 @@
 <resources>
 	<string name="app_name">SaasDemo</string>
-	<string name="loading">加载中</string>
+	<string name="loading">加载中&#8230;</string>
 	<string name="load_finished">加载完成</string>
 	<string name="permission_denied">应用缺少必要的权限，无法使用！</string>
 	<string name="modify_server_address">修改服务器地址需要重启APP，是否继续？</string>
@@ -11,6 +11,7 @@
 	<string name="cancel">取消</string>
 	<string name="exit">退出</string>
 	<string name="save">保存</string>
+	<string name="close">关闭</string>
 	<string name="download">下载</string>
 
 	<!-- DEBUG MODE -->

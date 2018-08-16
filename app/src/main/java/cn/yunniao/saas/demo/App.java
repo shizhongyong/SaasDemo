@@ -1,8 +1,6 @@
 package cn.yunniao.saas.demo;
 
 import android.app.Application;
-import android.os.Build;
-import android.util.Log;
 
 import cn.yunniao.saas.demo.common.constant.ServerHost;
 import cn.yunniao.saas.demo.common.utils.ActivityManager;
@@ -21,6 +19,7 @@ public class App extends Application {
 	private void initialize() {
 		AppUtil.init(this);
 		RetrofitHelper.getInstance().init(this, ServerHost.getServerAddress());
+		RetrofitHelper.getInstance().addHeaders(NetUtil.getHeaders());
 
 		registerActivityLifecycleCallbacks(ActivityManager.getInstance());
 	}

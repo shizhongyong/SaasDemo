@@ -1,6 +1,7 @@
 package cn.yunniao.saas.demo.net;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,30 +16,34 @@ import okhttp3.Response;
 
 public class HeaderInterceptor implements Interceptor {
 
-	private static final HashMap<String, String> HEADERS = new HashMap<>();
+	private final HashMap<String, String> mHeaders = new HashMap<>();
 
 	@Override
 	public Response intercept(Chain chain) throws IOException {
 		Request request = chain.request();
 		Request.Builder builder = request.newBuilder();
 
-		for (Map.Entry<String, String> entry : HEADERS.entrySet()) {
+		for (Map.Entry<String, String> entry : mHeaders.entrySet()) {
 			builder.addHeader(entry.getKey(), entry.getValue());
 		}
 
 		return chain.proceed(builder.build());
 	}
 
-	static void addHeader(Map<String, String> headers) {
-		HEADERS.putAll(headers);
+	public void addHeaders(Map<String, String> headers) {
+		mHeaders.putAll(headers);
 	}
 
-	static void addHeader(String name, String value) {
-		HEADERS.put(name, value);
+	public void addHeader(String name, String value) {
+		mHeaders.put(name, value);
 	}
 
-	static String removeHeader(String name) {
-		return HEADERS.remove(name);
+	public String removeHeader(String name) {
+		return mHeaders.remove(name);
+	}
+
+	public Map<String, String> getHeaders() {
+		return Collections.unmodifiableMap(mHeaders);
 	}
 
 }

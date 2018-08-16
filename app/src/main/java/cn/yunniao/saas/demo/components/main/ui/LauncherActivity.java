@@ -73,7 +73,7 @@ public class LauncherActivity extends BaseActivity {
 	}
 
 	private void allPermissionGranted() {
-		RetrofitHelper.addHeader(NetUtil.getHeaders());
+		RetrofitHelper.getInstance().addHeaders(NetUtil.getHeaders());
 
 		mHandler.postDelayed(mToMain, 2000);
 	}
